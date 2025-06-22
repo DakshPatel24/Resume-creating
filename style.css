@@ -1,88 +1,121 @@
-  * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Reset and global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-      color: #333;
-      padding: 20px;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #2e2e2e;
+  padding: 20px;
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    header h1 {
-      font-size: 2.5em;
-      color: #1a73e8;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
+header h1 {
+  font-size: 2em;
+  color: #0c3c78;
+  font-weight: 600;
+}
 
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+/* Form layout */
+form {
+  max-width: 720px;
+  margin: 0 auto;
+}
 
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-size: 1.4em;
-      color: #1a73e8;
-    }
+/* Group each label+input in a box */
+form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
 
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #333;
-    }
+.input-box {
+  background-color: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #0c3c78;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea {
-      width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      transition: border 0.3s ease, box-shadow 0.3s ease;
-    }
+/* Inputs and textareas */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  border: 1px solid #ccd0d5;
+  border-radius: 5px;
+  background-color: #fafbfc;
+  font-size: 0.95em;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
 
-    input:focus,
-    textarea:focus {
-      border-color: #1a73e8;
-      box-shadow: 0 0 5px rgba(26, 115, 232, 0.3);
-      outline: none;
-    }
+input:focus,
+textarea:focus {
+  border-color: #0c3c78;
+  box-shadow: 0 0 5px rgba(12, 60, 120, 0.15);
+  outline: none;
+  background-color: #fff;
+}
 
-    button[type="submit"] {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+/* Section titles (h2s) */
+form h2 {
+  font-size: 1.2em;
+  color: #0c3c78;
+  margin: 30px 0 15px;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 4px;
+}
 
-    button[type="submit"]:hover {
-      background-color: #1558b0;
-    }
+/* Submit button */
+button[type="submit"] {
+  background-color: #0c3c78;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
 
-    @media (max-width: 600px) {
-      form {
-        padding: 20px;       
-    }
-    }
+button[type="submit"]:hover {
+  background-color: #092b5c;
+}
 
-       
+/* Responsive design */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .input-box {
+    padding: 12px 15px;
+  }
+
+  form h2 {
+    font-size: 1.1em;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  button[type="submit"] {
+    font-size: 0.95em;
+  }
+}
