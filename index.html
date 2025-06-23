@@ -1,7 +1,7 @@
- <html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8<">
+  <meta charset="UTF-8">
   <title>Resume Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,67 +14,81 @@
   <form id="resumeForm">
 
     <div class="input-box">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-</div>
-<div class="input-box">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-</div>
-<div class="input-box">
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required>
-</div>
-<div class="input-box">
-    <label for="address">Address</label>
-    <textarea id="address" name="address" rows="4" required></textarea>
-</div>
-    <!-- Education -->
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="input-box">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="input-box">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required>
+    </div>
+
+    <div class="input-box">
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+    </div>
+
     <h2>Education</h2>
+
     <div class="input-box">
-    <label for="institute">Institute</label>
-    <input type="text" id="institute" name="institute" required>
+      <label for="institute">Institute</label>
+      <input type="text" id="institute" name="institute" required>
     </div>
+
     <div class="input-box">
-    <label for="degree">Degree</label>
-    <input type="text" id="degree" name="degree" required>
+      <label for="degree">Degree</label>
+      <input type="text" id="degree" name="degree" required>
     </div>
+
     <div class="input-box">
-    <label for="year">Year</label>
-    <input type="text" id="year" name="year" required>
+      <label for="year">Year</label>
+      <input type="text" id="year" name="year" required>
     </div>
-    <!-- Work Experience -->
+
     <h2>Work Experience</h2>
+
     <div class="input-box">
-    <label for="company">Company</label>
-    <input type="text" id="company" name="company" required>
+      <label for="company">Company</label>
+      <input type="text" id="company" name="company" required>
     </div>
-<div class="input-box">
-    <label for="role">Role</label>
-    <input type="text" id="role" name="role" required>
-</div>
-<div class="input-box">
-    <label for="duration">Duration</label>
-    <input type="text" id="duration" name="duration" required>
-</div>
-    <!-- Skills -->
+
+    <div class="input-box">
+      <label for="role">Role</label>
+      <input type="text" id="role" name="role" required>
+    </div>
+
+    <div class="input-box">
+      <label for="duration">Duration</label>
+      <input type="text" id="duration" name="duration" required>
+    </div>
+
     <h2>Skills</h2>
+
     <div class="input-box">
-    <label for="skills">List your skills (separated by commas)</label>
-    <textarea id="skills" name="skills" rows="3" placeholder="e.g., HTML, CSS, JavaScript" required></textarea>
+      <label for="skills">List your skills (separated by commas)</label>
+      <textarea id="skills" name="skills" rows="3" placeholder="e.g., HTML, CSS, JavaScript" required></textarea>
     </div>
-    <!-- Projects -->
+
     <h2>Projects</h2>
+
     <div class="input-box">
-    <label for="projectTitle">Project Title</label>
-    <input type="text" id="projectTitle" name="projectTitle" required>
+      <label for="projectTitle">Project Title</label>
+      <input type="text" id="projectTitle" name="projectTitle" required>
     </div>
+
     <div class="input-box">
-    <label for="projectDescription">Project Description</label>
-    <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
+      <label for="projectDescription">Project Description</label>
+      <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
     </div>
+
     <button type="submit">Submit</button>
   </form>
-<script src="style.js"></script>
+
+  <script src="style.js"></script>
 </body>
 </html>
