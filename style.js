@@ -1,22 +1,28 @@
- document.getElementById("resumeForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from actually submitting
+document.getElementById("resumeForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      address: document.getElementById("address").value,
+  const formData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    address: document.getElementById("address").value,
+    education: {
       institute: document.getElementById("institute").value,
       degree: document.getElementById("degree").value,
-      year: document.getElementById("year").value,
+      year: document.getElementById("year").value
+    },
+    experience: {
       company: document.getElementById("company").value,
       role: document.getElementById("role").value,
-      duration: document.getElementById("duration").value,
-      skills: document.getElementById("skills").value,
-      projectTitle: document.getElementById("projectTitle").value,
-      projectDescription: document.getElementById("projectDescription").value
-    };
+      duration: document.getElementById("duration").value
+    },
+    skills: document.getElementById("skills").value.split(",").map(skill => skill.trim()),
+    project: {
+      title: document.getElementById("projectTitle").value,
+      description: document.getElementById("projectDescription").value
+    }
+  };
 
-    console.log("Collected Resume Data as JSON:");
-    console.log(JSON.stringify(formData, null, 2)); // Pretty print the JSON
-  });
+  localStorage.setItem("resumeData", JSON.stringify(formData));
+  window.location.href = "preview.html";
+});
