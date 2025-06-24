@@ -1,120 +1,102 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Manali Theme CSS */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #2e2e2e;
-  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #eaf6f6, #d6efea);
+  color: #2f4f4f;
+  padding: 40px 20px;
+  margin: 0;
 }
 
-/* Header */
 header {
   text-align: center;
   margin-bottom: 30px;
+  color: #1a3c34;
 }
 
 header h1 {
-  font-size: 2em;
-  color: #0c3c78;
-  font-weight: 600;
+  font-size: 2.2em;
+  margin-bottom: 10px;
 }
 
-/* Form layout */
 form {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* Group each label+input in a box */
-form label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: #333;
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 60, 50, 0.15);
 }
 
 .input-box {
-  background-color: #fff;
+  background: #ffffff;
+  border-radius: 10px;
   padding: 15px 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border-left: 4px solid #0c3c78;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 80, 70, 0.08);
+  transition: transform 0.3s ease;
 }
 
-/* Inputs and textareas */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-textarea {
+.input-box:hover {
+  transform: translateY(-3px);
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2e6e63;
+}
+
+.input-box input,
+.input-box textarea {
   width: 100%;
-  padding: 10px 14px;
-  margin-top: 6px;
-  border: 1px solid #ccd0d5;
-  border-radius: 5px;
-  background-color: #fafbfc;
+  padding: 10px;
+  border: 1px solid #b3d5c3;
+  border-radius: 6px;
+  background-color: #f5fdfb;
   font-size: 0.95em;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-input:focus,
-textarea:focus {
-  border-color: #0c3c78;
-  box-shadow: 0 0 5px rgba(12, 60, 120, 0.15);
-  outline: none;
-  background-color: #fff;
+h2 {
+  margin-top: 30px;
+  color: #2f5e5e;
+  border-left: 4px solid #4caf50;
+  padding-left: 10px;
+  font-size: 1.4em;
 }
 
-/* Section titles (h2s) */
-form h2 {
-  font-size: 1.2em;
-  color: #0c3c78;
-  margin: 30px 0 15px;
-  border-bottom: 1px solid #e1e4e8;
-  padding-bottom: 4px;
-}
-
-/* Submit button */
-button[type="submit"] {
-  background-color: #0c3c78;
+button {
+  width: fit-content;
+  padding: 12px 25px;
+  background: #388e8e;
   color: white;
   border: none;
-  padding: 14px 20px;
-  font-size: 1em;
-  font-weight: 600;
-  border-radius: 6px;
   cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s ease;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  align-self: center;
+  transition: background 0.3s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #092b5c;
+button:hover {
+  background: #2f6e6e;
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
+@media print {
   body {
-    padding: 10px;
+    background: white;
   }
 
-  .input-box {
-    padding: 12px 15px;
+  form, header {
+    display: none;
   }
 
-  form h2 {
-    font-size: 1.1em;
-  }
-
-  header h1 {
-    font-size: 1.5em;
-  }
-
-  button[type="submit"] {
-    font-size: 0.95em;
+  @page {
+    size: A4;
+    margin: 20mm;
   }
 }
+
