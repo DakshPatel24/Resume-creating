@@ -4,45 +4,93 @@
   <meta charset="UTF-8">
   <title>Resume Templates - Manali Theme</title>
   <style>
-    /* Your existing Manali theme styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e6f2f5, #d0ebdd);
+      margin: 0;
+      padding: 40px 20px;
+      color: #2f4f4f;
+    }
+
+    .template-selector {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .template-selector button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #2e8b57;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+
+    .template-selector button:hover {
+      background-color: #256d47;
+    }
+
     .template {
-      background: #fff;
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 12px;
+      background: #ffffff;
+      max-width: 850px;
+      margin: 0 auto 30px;
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       border-left: 6px solid #2e8b57;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .template:hover {
+      transform: translateY(-4px);
     }
 
     .template h1 {
       color: #1a4f3f;
       text-align: center;
+      margin-top: 0;
     }
 
     .template h2 {
       color: #2e6e63;
-      border-bottom: 1px solid #ccc;
-      margin-top: 20px;
+      border-bottom: 2px solid #b2d8cc;
+      padding-bottom: 5px;
+      margin-top: 30px;
+      font-size: 1.4rem;
     }
 
-    .info {
-      margin-bottom: 15px;
+    .info, p, ul {
+      font-size: 1rem;
+      margin: 10px 0;
     }
 
-    .template-selector {
-      text-align: center;
-      margin-bottom: 20px;
+    ul {
+      padding-left: 20px;
     }
 
-    .template-selector button {
-      margin: 5px;
-      padding: 10px 16px;
-      background-color: #2e8b57;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+    strong {
+      color: #204a3d;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .template {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+      }
+
+      .template-selector {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -71,12 +119,16 @@
             <h1>${data.name}</h1>
             <p>Email: ${data.email} | Phone: ${data.phone}</p>
             <p>Address: ${data.address}</p>
+
             <h2>Education</h2>
             <p><strong>${data.education.institute}</strong> – ${data.education.degree} (${data.education.year})</p>
+
             <h2>Skills</h2>
             <p>${data.skills.join(", ")}</p>
+
             <h2>Experience</h2>
             <p><strong>${data.experience.company}</strong> – ${data.experience.role} (${data.experience.duration})</p>
+
             <h2>Projects</h2>
             <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
           </div>
@@ -89,12 +141,16 @@
             <h1>${data.name}</h1>
             <p><em>${data.email}</em> | ${data.phone}</p>
             <p><em>${data.address}</em></p>
+
             <h2>📘 Education</h2>
             <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
+
             <h2>💼 Work</h2>
             <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
+
             <h2>🛠️ Skills</h2>
             <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
+
             <h2>🚀 Project</h2>
             <p><strong>${data.project.title}</strong> – ${data.project.description}</p>
           </div>
@@ -108,12 +164,16 @@
             <p><strong>📧</strong> ${data.email} &nbsp;&nbsp; <strong>📱</strong> ${data.phone}</p>
             <p><strong>📍</strong> ${data.address}</p>
             <hr>
+
             <h2>🎓 Education</h2>
             <div class="info">${data.education.degree}, <strong>${data.education.institute}</strong> – ${data.education.year}</div>
+
             <h2>🧠 Skills</h2>
             <p>${data.skills.join(", ")}</p>
+
             <h2>💼 Experience</h2>
             <div class="info">${data.experience.role} at <strong>${data.experience.company}</strong> – ${data.experience.duration}</div>
+
             <h2>📁 Projects</h2>
             <div class="info"><strong>${data.project.title}</strong> – ${data.project.description}</div>
           </div>
@@ -123,10 +183,11 @@
       container.innerHTML = html;
     }
 
-    // Load default template on page load
     window.onload = () => renderTemplate(1);
   </script>
 </body>
 </html>
+
+
 
 
