@@ -4,160 +4,129 @@
   <meta charset="UTF-8">
   <title>Resume Templates - Manali Theme</title>
   <style>
-    body {
-      font-family: 'Verdana', sans-serif;
-      background: linear-gradient(135deg, #e6f2f5, #d0ebdd);
-      padding: 40px 20px;
-      margin: 0;
-      color: #2f4f4f;
-    }
-
+    /* Your existing Manali theme styles */
     .template {
-      background: #ffffff;
+      background: #fff;
       max-width: 800px;
       margin: 30px auto;
-      padding: 35px 45px;
-      border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      border-radius: 12px;
       border-left: 6px solid #2e8b57;
-      transition: transform 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .template:hover {
-      transform: scale(1.01);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .header h1 {
-      margin: 0;
-      font-size: 2.4em;
+    .template h1 {
       color: #1a4f3f;
-      font-family: 'Georgia', serif;
+      text-align: center;
     }
 
-    .header p {
-      margin: 5px;
-      color: #3e5c5c;
-      font-size: 0.95em;
-    }
-
-    .section {
-      margin-bottom: 28px;
-    }
-
-    .section h2 {
-      border-bottom: 2px solid #3b7360;
+    .template h2 {
       color: #2e6e63;
-      margin-bottom: 12px;
-      padding-bottom: 5px;
-      font-size: 1.3em;
+      border-bottom: 1px solid #ccc;
+      margin-top: 20px;
     }
 
     .info {
       margin-bottom: 15px;
-      color: #333;
     }
 
-    .subtext {
-      color: #666;
-      font-size: 0.95em;
+    .template-selector {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    ul {
-      padding-left: 20px;
-      margin-top: 5px;
-      color: #4b4b4b;
-    }
-
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
-
-      .template {
-        box-shadow: none;
-        border: none;
-        border-radius: 0;
-      }
+    .template-selector button {
+      margin: 5px;
+      padding: 10px 16px;
+      background-color: #2e8b57;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Template 1 -->
-  <div class="template">
-    <div class="header">
-      <h1>Aarav Thakur</h1>
-      <p>Email: aarav@example.com | Phone: +91 9876543210</p>
-      <p>Address: Mall Road, Manali, HP</p>
-    </div>
-
-    <div class="section">
-      <h2>Education</h2>
-      <div class="info"><strong>Himachal Technical University</strong><br>B.Tech in IT — 2022</div>
-    </div>
-
-    <div class="section">
-      <h2>Skills</h2>
-      <p>Python, Java, HTML/CSS, React</p>
-    </div>
+  <div class="template-selector">
+    <button onclick="renderTemplate(1)">Template 1</button>
+    <button onclick="renderTemplate(2)">Template 2</button>
+    <button onclick="renderTemplate(3)">Template 3</button>
   </div>
 
-  <!-- Template 2 -->
-  <div class="template">
-    <div class="header">
-      <h1>Kavya Mehta</h1>
-      <p>Email: kavya@demo.com | Phone: +91 9012345678</p>
-      <p>Address: Log Huts Area, Manali</p>
-    </div>
+  <div id="templateContainer"></div>
 
-    <div class="section">
-      <h2>Work Experience</h2>
-      <div class="info">
-        <strong>Snow Peak Technologies</strong><br>Frontend Developer (2021–2023)<br>
-        <span class="subtext">Designed cool and responsive UIs with React & Tailwind.</span>
-      </div>
-    </div>
+  <script>
+    const data = JSON.parse(localStorage.getItem("resumeData"));
 
-    <div class="section">
-      <h2>Projects</h2>
-      <div class="info">
-        <strong>Manali Tourism Website</strong><br>
-        <span class="subtext">Created an interactive tourism portal featuring local attractions and snowfall updates.</span>
-      </div>
-    </div>
-  </div>
+    function renderTemplate(templateNumber) {
+      if (!data) return;
 
-  <!-- Template 3 -->
-  <div class="template">
-    <div class="header">
-      <h1>Rohan Singh</h1>
-      <p>Email: rohan.singh@sample.com | Phone: +91 9988776655</p>
-      <p>Address: Old Manali, HP</p>
-    </div>
+      const container = document.getElementById("templateContainer");
+      let html = "";
 
-    <div class="section">
-      <h2>Certifications</h2>
-      <ul>
-        <li>Cloud Developer – AWS Academy</li>
-        <li>Responsive Design – FreeCodeCamp</li>
-      </ul>
-    </div>
+      if (templateNumber === 1) {
+        html = `
+          <div class="template">
+            <h1>${data.name}</h1>
+            <p>Email: ${data.email} | Phone: ${data.phone}</p>
+            <p>Address: ${data.address}</p>
+            <h2>Education</h2>
+            <p><strong>${data.education.institute}</strong> – ${data.education.degree} (${data.education.year})</p>
+            <h2>Skills</h2>
+            <p>${data.skills.join(", ")}</p>
+            <h2>Experience</h2>
+            <p><strong>${data.experience.company}</strong> – ${data.experience.role} (${data.experience.duration})</p>
+            <h2>Projects</h2>
+            <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
+          </div>
+        `;
+      }
 
-    <div class="section">
-      <h2>Projects</h2>
-      <div class="info">
-        <strong>Snow Forecast App</strong><br>
-        <span class="subtext">Built a weather forecast app with live snow predictions using OpenWeatherMap API.</span>
-      </div>
-    </div>
-  </div>
+      else if (templateNumber === 2) {
+        html = `
+          <div class="template" style="border-left: 6px solid #4a90e2;">
+            <h1>${data.name}</h1>
+            <p><em>${data.email}</em> | ${data.phone}</p>
+            <p><em>${data.address}</em></p>
+            <h2>📘 Education</h2>
+            <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
+            <h2>💼 Work</h2>
+            <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
+            <h2>🛠️ Skills</h2>
+            <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
+            <h2>🚀 Project</h2>
+            <p><strong>${data.project.title}</strong> – ${data.project.description}</p>
+          </div>
+        `;
+      }
 
+      else if (templateNumber === 3) {
+        html = `
+          <div class="template" style="font-family: Georgia, serif; border-left: 6px solid #a0522d;">
+            <h1 style="color:#8b4513;">${data.name}</h1>
+            <p><strong>📧</strong> ${data.email} &nbsp;&nbsp; <strong>📱</strong> ${data.phone}</p>
+            <p><strong>📍</strong> ${data.address}</p>
+            <hr>
+            <h2>🎓 Education</h2>
+            <div class="info">${data.education.degree}, <strong>${data.education.institute}</strong> – ${data.education.year}</div>
+            <h2>🧠 Skills</h2>
+            <p>${data.skills.join(", ")}</p>
+            <h2>💼 Experience</h2>
+            <div class="info">${data.experience.role} at <strong>${data.experience.company}</strong> – ${data.experience.duration}</div>
+            <h2>📁 Projects</h2>
+            <div class="info"><strong>${data.project.title}</strong> – ${data.project.description}</div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Load default template on page load
+    window.onload = () => renderTemplate(1);
+  </script>
 </body>
 </html>
+
 
