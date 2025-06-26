@@ -106,59 +106,61 @@
 
   <script>
     const data = JSON.parse(localStorage.getItem("resumeData"));
+window.onload = () => renderTemplate(1); // Template 1 is default
 
+    
     function renderTemplate(templateNumber) {
       if (!data) return;
-
+      
       const container = document.getElementById("templateContainer");
       let html = "";
-
+      
       if (templateNumber === 1) {
         html = `
-          <div class="template">
+        <div class="template">
             <h1>${data.name}</h1>
             <p>Email: ${data.email} | Phone: ${data.phone}</p>
             <p>Address: ${data.address}</p>
-
+            
             <h2>Education</h2>
             <p><strong>${data.education.institute}</strong> – ${data.education.degree} (${data.education.year})</p>
-
+            
             <h2>Skills</h2>
             <p>${data.skills.join(", ")}</p>
-
+            
             <h2>Experience</h2>
             <p><strong>${data.experience.company}</strong> – ${data.experience.role} (${data.experience.duration})</p>
-
+            
             <h2>Projects</h2>
             <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
-          </div>
-        `;
-      }
+            </div>
+            `;
+          }
+          
+          else if (templateNumber === 2) {
+            html = `
+            <div class="template" style="border-left: 6px solid #4a90e2;">
+              <h1>${data.name}</h1>
+              <p><em>${data.email}</em> | ${data.phone}</p>
+              <p><em>${data.address}</em></p>
 
-      else if (templateNumber === 2) {
-        html = `
-          <div class="template" style="border-left: 6px solid #4a90e2;">
-            <h1>${data.name}</h1>
-            <p><em>${data.email}</em> | ${data.phone}</p>
-            <p><em>${data.address}</em></p>
-
-            <h2>📘 Education</h2>
-            <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
-
-            <h2>💼 Work</h2>
-            <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
-
-            <h2>🛠️ Skills</h2>
+              <h2>📘 Education</h2>
+              <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
+              
+              <h2>💼 Work</h2>
+              <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
+              
+              <h2>🛠️ Skills</h2>
             <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
-
+            
             <h2>🚀 Project</h2>
             <p><strong>${data.project.title}</strong> – ${data.project.description}</p>
-          </div>
-        `;
-      }
-
-      else if (templateNumber === 3) {
-        html = `
+            </div>
+            `;
+          }
+          
+          else if (templateNumber === 3) {
+            html = `
           <div class="template" style="font-family: Georgia, serif; border-left: 6px solid #a0522d;">
             <h1 style="color:#8b4513;">${data.name}</h1>
             <p><strong>📧</strong> ${data.email} &nbsp;&nbsp; <strong>📱</strong> ${data.phone}</p>
@@ -170,20 +172,21 @@
 
             <h2>🧠 Skills</h2>
             <p>${data.skills.join(", ")}</p>
-
+            
             <h2>💼 Experience</h2>
             <div class="info">${data.experience.role} at <strong>${data.experience.company}</strong> – ${data.experience.duration}</div>
 
             <h2>📁 Projects</h2>
             <div class="info"><strong>${data.project.title}</strong> – ${data.project.description}</div>
-          </div>
-        `;
+            </div>
+            `;
       }
 
       container.innerHTML = html;
     }
-
+    
     window.onload = () => renderTemplate(1);
+   
   </script>
 </body>
 </html>
