@@ -82,14 +82,38 @@
     </div>
 
     <button type="submit">Preview Resume</button>
-   <button onclick="window.location.href='resume.html'">View Resume</button>
-
+    <button onclick="window.location.href='resume.html'">View Resume</button>
+    <button type="button" onclick="generateResume()">Generate Resume</button>
 
   </form>
+<div id="resumePreview" style="display: none; margin: 40px auto; max-width: 800px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);">
+    <h1 id="previewName"></h1>
+    <p id="previewContact"></p>
+    <p id="previewAddress"></p>
+
+    <h2>Education</h2>
+    <p id="previewEducation"></p>
+
+    <h2>Experience</h2>
+    <p id="previewExperience"></p>
+
+    <h2>Skills</h2>
+    <ul id="previewSkills"></ul>
+
+    <h2>Project</h2>
+    <p id="previewProject"></p>
+
+    <br>
+    <button onclick="goBackToForm()">← Back to Edit</button>
+  </div>
+
+
 
   <script src="style.js"></script>
 </body>
 </html>
+
+
 
 
 
