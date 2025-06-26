@@ -92,6 +92,7 @@
     <div id="projectsSection" class="section"></div>
   </div>
 
+
   <script>
     const data = JSON.parse(localStorage.getItem("resumeData"));
 
@@ -119,6 +120,34 @@
         <p><strong>${data.project.title}</strong><br>
         ${data.project.description}</p>`;
     }
+  
+
+  // Populate the preview
+  document.getElementById('previewName').textContent = resumeData.name;
+  document.getElementById('previewContact').textContent = `Email: ${resumeData.email} | Phone: ${resumeData.phone}`;
+  document.getElementById('previewAddress').textContent = `Address: ${resumeData.address}`;
+
+  document.getElementById('previewEducation').textContent =
+    `${resumeData.education.degree}, ${resumeData.education.institute} (${resumeData.education.year})`;
+
+  document.getElementById('previewExperience').textContent =
+    `${resumeData.experience.role} at ${resumeData.experience.company} (${resumeData.experience.duration})`;
+
+  document.getElementById('previewSkills').textContent = resumeData.skills.join(', ');
+  document.getElementById('previewProject').textContent =
+    `${resumeData.project.title}: ${resumeData.project.description}`;
+
+  // Show resume and hide form
+  document.getElementById('resumeForm').style.display = 'none';
+  document.getElementById('resumePreview').style.display = 'block';
+
+
+// Back button logic
+function goBackToForm() {
+  document.getElementById('resumePreview').style.display = 'none';
+  document.getElementById('resumeForm').style.display = 'block';
+}
+
   </script>
 </body>
 </html>
