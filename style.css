@@ -1,4 +1,7 @@
- /* Manali Theme CSS */
+/* ============================
+   🌿 Manali Resume Builder UI
+   ============================ */
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #eaf6f6, #d6efea);
@@ -14,22 +17,26 @@ header {
 }
 
 header h1 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
+  font-size: 2.6em;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
+/* Form container */
 form {
-  max-width: 850px;
+  max-width: 900px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 30px;
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0, 60, 50, 0.15);
+  gap: 25px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 60, 50, 0.15);
 }
 
+/* Each input section */
 .input-box {
   background: #ffffff;
   border-radius: 10px;
@@ -47,26 +54,36 @@ form {
   margin-bottom: 8px;
   font-weight: bold;
   color: #2e6e63;
+  font-size: 1rem;
 }
 
 .input-box input,
 .input-box textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #b3d5c3;
   border-radius: 6px;
   background-color: #f5fdfb;
   font-size: 0.95em;
+  transition: border-color 0.3s;
 }
 
+.input-box input:focus,
+.input-box textarea:focus {
+  outline: none;
+  border-color: #3aa57d;
+}
+
+/* Section Headings */
 h2 {
-  margin-top: 30px;
+  margin-top: 40px;
   color: #2f5e5e;
-  border-left: 4px solid #4caf50;
-  padding-left: 10px;
-  font-size: 1.4em;
+  border-left: 5px solid #4caf50;
+  padding-left: 12px;
+  font-size: 1.5em;
 }
 
+/* Buttons */
 button {
   width: fit-content;
   padding: 12px 25px;
@@ -78,24 +95,79 @@ button {
   font-weight: bold;
   font-size: 1em;
   align-self: center;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background: #2f6e6e;
+  transform: scale(1.02);
 }
 
+/* Resume preview styling */
+#resumePreview {
+  display: none;
+  margin: 40px auto;
+  max-width: 850px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+}
+
+#resumePreview h1 {
+  text-align: center;
+  color: #1a3c34;
+  margin-bottom: 10px;
+}
+
+#resumePreview h2 {
+  margin-top: 30px;
+  color: #2f5e5e;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  font-size: 1.4em;
+}
+
+#resumePreview p,
+#resumePreview ul {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+/* ============================
+   🖨️ Print Mode
+   ============================ */
 @media print {
-  body {
-    background: white;
+  body * {
+    visibility: hidden;
   }
 
-  form, header {
-    display: none;
+  #resumePreview, #resumePreview * {
+    visibility: visible;
+  }
+
+  #resumePreview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: none !important;
+  }
+
+  button,
+  header,
+  form {
+    display: none !important;
   }
 
   @page {
     size: A4;
     margin: 20mm;
+  }
+
+  body {
+    background: white;
+    padding: 0;
   }
 }
