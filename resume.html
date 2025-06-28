@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Resume Templates - Manali Theme</title>
+  <title>Resume Templates - Viewer</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -17,21 +17,13 @@
       margin-bottom: 30px;
     }
 
-    .template-selector button {
-      margin: 5px;
-      padding: 10px 20px;
-      background-color: #2e8b57;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
+    .template-selector select {
+      padding: 10px 15px;
       font-size: 16px;
-      cursor: pointer;
+      border-radius: 6px;
+      border: 1px solid #2e8b57;
+      outline: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
-    }
-
-    .template-selector button:hover {
-      background-color: #256d47;
     }
 
     .template {
@@ -97,100 +89,144 @@
 <body>
 
   <div class="template-selector">
-    <button onclick="renderTemplate(1)">Template 1</button>
-    <button onclick="renderTemplate(2)">Template 2</button>
-    <button onclick="renderTemplate(3)">Template 3</button>
+    <label for="templateSelect"><strong>Choose Template:</strong></label>
+    <select id="templateSelect" onchange="renderTemplate(this.value)">
+      <option value="1">Modern theme</option>
+      <option value="2">Blue Modern</option>
+      <option value="3">Classic Serif</option>
+      <option value="4">Dark Minimal</option>
+    </select>
   </div>
 
   <div id="templateContainer"></div>
 
   <script>
-    const data = JSON.parse(localStorage.getItem("resumeData"));
-window.onload = () => renderTemplate(1); // Template 1 is default
+    const data = JSON.parse(localStorage.getItem("resumeData")) || {
+      name: "John Doe",
+      email: "john@example.com",
+      phone: "+1234567890",
+      address: "123 Main Street, City",
+      education: {
+        institute: "Example University",
+        degree: "B.Tech in Computer Science",
+        year: "2022"
+      },
+      experience: {
+        company: "Tech Corp",
+        role: "Frontend Developer",
+        duration: "2022–Present"
+      },
+      skills: ["JavaScript", "React", "CSS", "Git"],
+      project: {
+        title: "Portfolio Website",
+        description: "A personal website built using HTML, CSS, and JavaScript to showcase my projects and experience."
+      }
+    };
 
-    
     function renderTemplate(templateNumber) {
-      if (!data) return;
-      
+      templateNumber = parseInt(templateNumber);
       const container = document.getElementById("templateContainer");
       let html = "";
-      
+
       if (templateNumber === 1) {
         html = `
         <div class="template">
-            <h1>${data.name}</h1>
-            <p>Email: ${data.email} | Phone: ${data.phone}</p>
-            <p>Address: ${data.address}</p>
-            
-            <h2>Education</h2>
-            <p><strong>${data.education.institute}</strong> – ${data.education.degree} (${data.education.year})</p>
-            
-            <h2>Skills</h2>
-            <p>${data.skills.join(", ")}</p>
-            
-            <h2>Experience</h2>
-            <p><strong>${data.experience.company}</strong> – ${data.experience.role} (${data.experience.duration})</p>
-            
-            <h2>Projects</h2>
-            <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
-            </div>
-            `;
-          }
-          
-          else if (templateNumber === 2) {
-            html = `
-            <div class="template" style="border-left: 6px solid #4a90e2;">
-              <h1>${data.name}</h1>
-              <p><em>${data.email}</em> | ${data.phone}</p>
-              <p><em>${data.address}</em></p>
+          <h1>${data.name}</h1>
+          <p>Email: ${data.email} | Phone: ${data.phone}</p>
+          <p>Address: ${data.address}</p>
 
-              <h2>📘 Education</h2>
-              <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
-              
-              <h2>💼 Work</h2>
-              <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
-              
-              <h2>🛠️ Skills</h2>
-            <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
-            
-            <h2>🚀 Project</h2>
-            <p><strong>${data.project.title}</strong> – ${data.project.description}</p>
-            </div>
-            `;
-          }
-          
-          else if (templateNumber === 3) {
-            html = `
-          <div class="template" style="font-family: Georgia, serif; border-left: 6px solid #a0522d;">
-            <h1 style="color:#8b4513;">${data.name}</h1>
-            <p><strong>📧</strong> ${data.email} &nbsp;&nbsp; <strong>📱</strong> ${data.phone}</p>
-            <p><strong>📍</strong> ${data.address}</p>
-            <hr>
+          <h2>Education</h2>
+          <p><strong>${data.education.institute}</strong> – ${data.education.degree} (${data.education.year})</p>
 
-            <h2>🎓 Education</h2>
-            <div class="info">${data.education.degree}, <strong>${data.education.institute}</strong> – ${data.education.year}</div>
+          <h2>Skills</h2>
+          <p>${data.skills.join(", ")}</p>
 
-            <h2>🧠 Skills</h2>
-            <p>${data.skills.join(", ")}</p>
-            
-            <h2>💼 Experience</h2>
-            <div class="info">${data.experience.role} at <strong>${data.experience.company}</strong> – ${data.experience.duration}</div>
+          <h2>Experience</h2>
+          <p><strong>${data.experience.company}</strong> – ${data.experience.role} (${data.experience.duration})</p>
 
-            <h2>📁 Projects</h2>
-            <div class="info"><strong>${data.project.title}</strong> – ${data.project.description}</div>
-            </div>
-            `;
+          <h2>Projects</h2>
+          <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
+        </div>
+        `;
+      }
+
+      else if (templateNumber === 2) {
+        html = `
+        <div class="template" style="border-left: 6px solid #4a90e2;">
+          <h1>${data.name}</h1>
+          <p><em>${data.email}</em> | ${data.phone}</p>
+          <p><em>${data.address}</em></p>
+
+          <h2>📘 Education</h2>
+          <p>${data.education.degree} from <strong>${data.education.institute}</strong> (${data.education.year})</p>
+
+          <h2>💼 Work</h2>
+          <p>${data.experience.role} at <strong>${data.experience.company}</strong> (${data.experience.duration})</p>
+
+          <h2>🛠️ Skills</h2>
+          <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
+
+          <h2>🚀 Project</h2>
+          <p><strong>${data.project.title}</strong> – ${data.project.description}</p>
+        </div>
+        `;
+      }
+
+      else if (templateNumber === 3) {
+        html = `
+        <div class="template" style="font-family: Georgia, serif; border-left: 6px solid #a0522d;">
+          <h1 style="color:#8b4513;">${data.name}</h1>
+          <p><strong>📧</strong> ${data.email} &nbsp;&nbsp; <strong>📱</strong> ${data.phone}</p>
+          <p><strong>📍</strong> ${data.address}</p>
+          <hr>
+
+          <h2>🎓 Education</h2>
+          <div class="info">${data.education.degree}, <strong>${data.education.institute}</strong> – ${data.education.year}</div>
+
+          <h2>🧠 Skills</h2>
+          <p>${data.skills.join(", ")}</p>
+
+          <h2>💼 Experience</h2>
+          <div class="info">${data.experience.role} at <strong>${data.experience.company}</strong> – ${data.experience.duration}</div>
+
+          <h2>📁 Projects</h2>
+          <div class="info"><strong>${data.project.title}</strong> – ${data.project.description}</div>
+        </div>
+        `;
+      }
+
+      else if (templateNumber === 4) {
+        html = `
+        <div class="template" style="background:#1e1e1e; color:#f0f0f0; font-family:'Courier New', monospace; border-left:6px solid #f39c12;">
+          <h1 style="text-align:center; color:#f39c12;">${data.name}</h1>
+          <p>Email: ${data.email} | Phone: ${data.phone}</p>
+          <p>Address: ${data.address}</p>
+
+          <h2 style="color:#f39c12;">Education</h2>
+          <p>${data.education.degree}, ${data.education.institute} (${data.education.year})</p>
+
+          <h2 style="color:#f39c12;">Skills</h2>
+          <ul>${data.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
+
+          <h2 style="color:#f39c12;">Experience</h2>
+          <p>${data.experience.role} at ${data.experience.company} (${data.experience.duration})</p>
+
+          <h2 style="color:#f39c12;">Project</h2>
+          <p><strong>${data.project.title}</strong>: ${data.project.description}</p>
+        </div>
+        `;
       }
 
       container.innerHTML = html;
     }
-    
-    window.onload = () => renderTemplate(1);
-   
+
+    window.onload = () => {
+      document.getElementById('templateSelect').value = "1";
+      renderTemplate(1);
+    };
   </script>
+
 </body>
 </html>
-
-
 
 
